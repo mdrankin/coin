@@ -1,9 +1,9 @@
 Release Process
 ====================
 
-* Update translations, see [translation_process.md](https://github.com/dashpay/dash/blob/master/doc/translation_process.md#synchronising-translations).
+* Update translations, see [translation_process.md](https://github.com/Bitcreds/BCRS/blob/master/doc/translation_process.md#synchronising-translations).
 
-* Update manpages, see [gen-manpages.sh](https://github.com/dashpay/dash/blob/master/contrib/devtools/README.md#gen-manpagessh).
+* Update manpages, see [gen-manpages.sh](https://github.com/Bitcreds/BCRS/blob/master/contrib/devtools/README.md#gen-manpagessh).
 
 Before every minor and major release:
 
@@ -26,15 +26,11 @@ Before every major release:
 
 ### First time / New builders
 
-If you're using the automated script (found in [contrib/gitian-build.py](/contrib/gitian-build.py)), then at this point you should run it with the "--setup" command. Otherwise ignore this.
-
 Check out the source code in the following directory hierarchy.
 
 	cd /path/to/your/toplevel/build
-	git clone https://github.com/dashpay/gitian.sigs.git
-	git clone https://github.com/dashpay/dash-detached-sigs.git
 	git clone https://github.com/devrandom/gitian-builder.git
-	git clone https://github.com/dashpay/dash.git
+	git clone https://github.com/Bitcreds/BCRS.git
 
 ### Dash Core maintainers/release engineers, suggestion for writing release notes
 
@@ -51,8 +47,6 @@ Tag version (or release candidate) in git
     git tag -s v(new version, e.g. 0.12.3)
 
 ### Setup and perform Gitian builds
-
-If you're using the automated script (found in [contrib/gitian-build.py](/contrib/gitian-build.py)), then at this point you should run it with the "--build" command. Otherwise ignore this.
 
 Setup Gitian descriptors:
 
@@ -130,20 +124,7 @@ Build output expected:
   4. OS X unsigned installer and dist tarball (`dash-${VERSION}-osx-unsigned.dmg`, `dash-${VERSION}-osx64.tar.gz`)
   5. Gitian signatures (in `gitian.sigs/${VERSION}-<linux|{win,osx}-unsigned>/(your Gitian key)/`)
 
-### Verify other gitian builders signatures to your own. (Optional)
 
-Add other gitian builders keys to your gpg keyring, and/or refresh keys.
-
-    gpg --import dash/contrib/gitian-keys/*.pgp
-    gpg --refresh-keys
-
-Verify the signatures
-
-    pushd ./gitian-builder
-    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-linux ../dash/contrib/gitian-descriptors/gitian-linux.yml
-    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-win-unsigned ../dash/contrib/gitian-descriptors/gitian-win.yml
-    ./bin/gverify -v -d ../gitian.sigs/ -r ${VERSION}-osx-unsigned ../dash/contrib/gitian-descriptors/gitian-osx.yml
-    popd
 
 ### Next steps:
 
@@ -188,10 +169,6 @@ Codesigner only: Commit the detached codesign payloads:
     git tag -s v${VERSION} HEAD
     git push the current branch and new tag
 
-Non-codesigners: wait for Windows/OS X detached signatures:
-
-- Once the Windows/OS X builds each have 3 matching signatures, they will be signed with their respective release keys.
-- Detached signatures will then be committed to the [dash-detached-sigs](https://github.com/dashpay/dash-detached-sigs) repository, which can be combined with the unsigned apps to create signed binaries.
 
 Create (and optionally verify) the signed OS X binary:
 
@@ -265,12 +242,12 @@ Note: check that SHA256SUMS itself doesn't end up in SHA256SUMS, which is a spur
 
   - Release on Dash forum: https://www.dash.org/forum/topic/official-announcements.54/
 
-  - Optionally Discord, twitter, reddit /r/Dashpay, ... but this will usually sort out itself
+  - Optionally Discord, Twitter
 
   - Notify flare so that he can start building [the PPAs](https://launchpad.net/~dash.org/+archive/ubuntu/dash)
 
   - Archive release notes for the new version to `doc/release-notes/` (branch `master` and branch of the release)
 
-  - Create a [new GitHub release](https://github.com/dashpay/dash/releases/new) with a link to the archived release notes.
+  - Create a [new GitHub release](https://github.com/Bitcreds/BCRS/releases/new) with a link to the archived release notes.
 
   - Celebrate

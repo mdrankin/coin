@@ -4,7 +4,7 @@
 * blocks/rev000??.dat; block undo data (custom)
 * blocks/index/*; block index (LevelDB)
 * chainstate/*; block chain state database (LevelDB)
-* dash.conf: contains configuration settings for dashd or dash-qt
+* bitcreds.conf: contains configuration settings for dashd or dash-qt
 * dashd.pid: stores the process id of dashd while running
 * database/*: BDB database environment; only used for wallet
 * db.log: wallet database log file

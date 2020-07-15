@@ -87,9 +87,9 @@ BITCOIN_TESTS =\
   test/skiplist_tests.cpp \
   test/streams_tests.cpp \
   test/subsidy_tests.cpp \
-  test/test_dash.cpp \
-  test/test_dash.h \
-  test/test_dash_main.cpp \
+  test/test_bitcreds.cpp \
+  test/test_bitcreds.h \
+  test/test_bitcreds_main.cpp \
   test/timedata_tests.cpp \
   test/torcontrol_tests.cpp \
   test/transaction_tests.cpp \
@@ -127,7 +127,7 @@ endif
 #
 
 # test_dash_fuzzy binary #
-test_test_dash_fuzzy_SOURCES = test/test_dash_fuzzy.cpp
+test_test_dash_fuzzy_SOURCES = test/test_bitcreds_fuzzy.cpp
 test_test_dash_fuzzy_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
 test_test_dash_fuzzy_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 test_test_dash_fuzzy_LDFLAGS = $(LDFLAGS_WRAP_EXCEPTIONS) $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)

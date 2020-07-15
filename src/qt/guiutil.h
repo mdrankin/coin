@@ -154,7 +154,7 @@ namespace GUIUtil
     // Open debug.log
     void openDebugLogfile();
 	
-    // Open dash.conf
+    // Open bitcreds.conf
     void openConfigfile();	
 
     // Browse backup folder

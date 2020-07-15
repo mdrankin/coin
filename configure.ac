@@ -8,7 +8,7 @@ define(_CLIENT_VERSION_IS_RELEASE, true)
 define(_COPYRIGHT_YEAR, 2020)
 define(_COPYRIGHT_HOLDERS,[The %s developers])
 define(_COPYRIGHT_HOLDERS_SUBSTITUTION,[[Dash Core]])
-AC_INIT([Dash Core],[_CLIENT_VERSION_MAJOR._CLIENT_VERSION_MINOR._CLIENT_VERSION_REVISION],[https://github.com/dashpay/dash/issues],[dashcore],[https://dash.org/])
+AC_INIT([Dash Core],[_CLIENT_VERSION_MAJOR._CLIENT_VERSION_MINOR._CLIENT_VERSION_REVISION],[https://github.com/Bitcreds/BCRS/issues],[dashcore],[https://dash.org/])
 AC_CONFIG_SRCDIR([src/validation.cpp])
 AC_CONFIG_HEADERS([src/config/dash-config.h])
 AC_CONFIG_AUX_DIR([build-aux])
@@ -27,9 +27,9 @@ fi
 
 AC_CANONICAL_HOST
 
-AH_TOP([#ifndef DASH_CONFIG_H])
-AH_TOP([#define DASH_CONFIG_H])
-AH_BOTTOM([#endif //DASH_CONFIG_H])
+AH_TOP([#ifndef BCRS_CONFIG_H])
+AH_TOP([#define BCRS_CONFIG_H])
+AH_BOTTOM([#endif //BCRS_CONFIG_H])
 
 dnl faketime breaks configure and is only needed for make. Disable it here.
 unset FAKETIME
@@ -1152,7 +1152,7 @@ AC_MSG_CHECKING([whether to build libraries])
 AM_CONDITIONAL([BUILD_BITCOIN_LIBS], [test x$build_bitcoin_libs = xyes])
 if test x$build_bitcoin_libs = xyes; then
   AC_DEFINE(HAVE_CONSENSUS_LIB, 1, [Define this symbol if the consensus lib has been built])
-  AC_CONFIG_FILES([libdashconsensus.pc:libdashconsensus.pc.in])
+  AC_CONFIG_FILES([libdashconsensus.pc:libbitcredsconsensus.pc.in])
 fi
 AC_MSG_RESULT($build_bitcoin_libs)
 

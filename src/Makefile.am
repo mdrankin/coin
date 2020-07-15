@@ -476,7 +476,7 @@ libdash_consensus_a_SOURCES = \
   primitives/transaction.h \
   pubkey.cpp \
   pubkey.h \
-  script/dashconsensus.cpp \
+  script/bitcredsconsensus.cpp \
   script/interpreter.cpp \
   script/interpreter.h \
   script/script.cpp \
@@ -563,13 +563,13 @@ nodist_libdash_util_a_SOURCES = $(srcdir)/obj/build.h
 #
 
 # dashd binary #
-dashd_SOURCES = dashd.cpp
+dashd_SOURCES = bitcredsd.cpp
 dashd_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
 dashd_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 dashd_LDFLAGS = $(LDFLAGS_WRAP_EXCEPTIONS) $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-dashd_SOURCES += dashd-res.rc
+dashd_SOURCES += bitcredsd-res.rc
 endif
 
 dashd_LDADD = \
@@ -589,13 +589,13 @@ dashd_LDADD = \
 dashd_LDADD += $(BACKTRACE_LIB) $(BOOST_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS) $(ZMQ_LIBS) $(BLS_LIBS)
 
 # dash-cli binary #
-dash_cli_SOURCES = dash-cli.cpp
+dash_cli_SOURCES = bitcreds-cli.cpp
 dash_cli_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES) $(EVENT_CFLAGS)
 dash_cli_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 dash_cli_LDFLAGS = $(LDFLAGS_WRAP_EXCEPTIONS) $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-dash_cli_SOURCES += dash-cli-res.rc
+dash_cli_SOURCES += bitcreds-cli-res.rc
 endif
 
 dash_cli_LDADD = \
@@ -607,13 +607,13 @@ dash_cli_LDADD += $(BACKTRACE_LIB) $(BOOST_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(EV
 #
 
 # dash-tx binary #
-dash_tx_SOURCES = dash-tx.cpp
+dash_tx_SOURCES = bitcreds-tx.cpp
 dash_tx_CPPFLAGS = $(AM_CPPFLAGS) $(BITCOIN_INCLUDES)
 dash_tx_CXXFLAGS = $(AM_CXXFLAGS) $(PIE_FLAGS)
 dash_tx_LDFLAGS = $(LDFLAGS_WRAP_EXCEPTIONS) $(RELDFLAGS) $(AM_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
 
 if TARGET_WINDOWS
-dash_tx_SOURCES += dash-tx-res.rc
+dash_tx_SOURCES += bitcreds-tx-res.rc
 endif
 
 dash_tx_LDADD = \
@@ -629,7 +629,7 @@ dash_tx_LDADD += $(BACKTRACE_LIB) $(BOOST_LIBS) $(CRYPTO_LIBS) $(BLS_LIBS)
 
 # dashconsensus library #
 if BUILD_BITCOIN_LIBS
-include_HEADERS = script/dashconsensus.h
+include_HEADERS = script/bitcredsconsensus.h
 libdashconsensus_la_SOURCES = support/cleanse.cpp $(crypto_libdash_crypto_base_a_SOURCES) $(libdash_consensus_a_SOURCES)
 
 if GLIBC_BACK_COMPAT
