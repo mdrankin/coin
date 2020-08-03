@@ -11,10 +11,9 @@ addons:
 
 sudo: required
 dist: trusty
-before_install:
-  - chmod +x ./ci/build_depends.sh
 
 install:
+  - chmod +x ./ci/build_depends.sh
   - sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y;
   - sudo apt-get update -qq
   - sudo apt-get install g++-4.9
