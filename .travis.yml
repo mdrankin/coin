@@ -22,4 +22,5 @@ install:
 script:
   - export CC=gcc-7
   - export CXX=g++-7
+  - ./ci/build_depends.sh
   - ./autogen.sh && ./configure --with-gui && make
