@@ -4,7 +4,9 @@ os: linux
 sudo: required
 dist: trusty
 install:
-  - sudo apt-get update
+   sudo add-apt-repository ppa:ubuntu-toolchain-r/test -y;
+  - sudo apt-get update -qq
+  - sudo apt-get install g++-4.9
   - sudo apt-get install -y build-essential libtool automake autotools-dev autoconf pkg-config libssl-dev libcrypto++-dev libevent-dev git libboost-all-dev 
   - sudo add-apt-repository -y ppa:bitcoin/bitcoin
   - sudo apt-get update -y && sudo apt-get install -y libdb4.8-dev libdb4.8++-dev libzmq3-dev
